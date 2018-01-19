@@ -1,0 +1,34 @@
+﻿@using PartialView.Models
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Single View Index</h2>
+<div class="row">
+    <div  class="col-md-6" id="indexList">
+        
+            
+                @foreach (var item in PerCar.Cars)
+                {
+                    <div class="row" id="@("CarId"+item.Id)">
+                        <div class="col-md-8">
+                            @Html.Action("PartCar","Home", new { id = item.Id })
+                        </div>
+                        <div class="col-md-4">
+                            @Ajax.ActionLink("Remove", "AjaxRemoveCar", new {id=item.Id}
+                           ,new AjaxOptions {
+                               InsertionMode=InsertionMode.Replace,
+                               UpdateTargetId=$"CarId"+item.Id
+                           },new {@class="btn btn-danger" })
+                        </div>
+                    </div>
+                }
+
+                        
+                    </div>
+    
+    <div class="col-md-6" id="myTarget">
+
+    </div>
+</div>
+

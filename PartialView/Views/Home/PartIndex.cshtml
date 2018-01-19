@@ -1,0 +1,27 @@
+﻿@using PartialView.Models
+
+@{
+    ViewBag.Title = "PartIndex";
+}
+
+<h2>PartIndex</h2>
+<div class="row">
+    <div class="col-md-6">
+        <table>
+
+            @foreach (var item in PerCar.People)
+            {
+                @Html.Partial("_Person", item)
+            }
+        </table>
+      </div >
+        <div class="col-md-6">
+            @foreach (var item in PerCar.Cars)
+            {
+                @Html.Action("PartCar", new { id=item.Id})
+            }
+ 
+      </div>
+
+</div>
+
